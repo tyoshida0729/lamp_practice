@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: mysql
--- 生成日時: 2021 年 10 月 21 日 03:44
+-- 生成日時: 2021 年 10 月 22 日 16:05
 -- サーバのバージョン： 10.6.4-MariaDB-1:10.6.4+maria~focal
 -- PHP のバージョン: 7.4.20
 
@@ -32,7 +32,7 @@ CREATE TABLE `bought_detail` (
   `order_id` int(11) NOT NULL COMMENT '注文番号',
   `item_id` int(11) NOT NULL COMMENT '商品ID',
   `price` int(11) NOT NULL COMMENT '値段',
-  `stock` int(11) NOT NULL COMMENT '在庫数'
+  `amount` int(11) NOT NULL COMMENT '購入数'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
@@ -44,8 +44,6 @@ CREATE TABLE `bought_detail` (
 CREATE TABLE `bought_history` (
   `order_id` int(11) NOT NULL COMMENT '注文番号',
   `user_id` int(11) NOT NULL COMMENT 'ユーザーID',
-  `price` int(11) NOT NULL COMMENT '値段',
-  `amount` int(11) NOT NULL COMMENT '購入数',
   `total_price` int(11) NOT NULL COMMENT '合計金額',
   `boughtd` datetime NOT NULL COMMENT '購入日時'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
