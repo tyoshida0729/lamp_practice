@@ -53,6 +53,37 @@ function get_user_cart($db, $user_id, $item_id) {
   return fetch_query($db, $sql, [$user_id, $item_id]);
 }
 
+function get_histories($db) {
+  $sql = "SELECT * FROM bought_history order by boughtd DESC";
+
+  return fetch_all_query($db, $sql);
+}
+
+function get_users_histories($db, $user_id) {
+  $sql = "SELECT * FROM bought_history WHERE user_id = ? order by boughtd DESC";
+
+  return fetch_all_query($db, $sql, [$user_id]);
+}
+
+function get_details($db, $order_id) {
+  $sql = "SELECT name,bought_detail.price,amount,bought_detail.price*amount as sub_total 
+  FROM bought_detail
+  INNER JOIN items ON items.item_id = bought_detail.item_id
+  WHERE order_id = ?";
+
+  return fetch_all_query($db, $sql, [$order_id]);
+}
+
+function get_users_details($db, $user_id, $order_id) {
+  $sql = "SELECT name,bought_detail.price,amount,bought_detail.price*amount as sub_total 
+  FROM bought_detail
+  INNER JOIN items ON items.item_id = bought_detail.item_id
+  INNER JOIN bought_history ON bought_detail.order_id = bought_history.order_id
+  WHERE user_id = ? AND bought_detail.order_id = ?";
+
+  return fetch_all_query($db, $sql, [$user_id, $order_id]);
+}
+
 function add_cart($db, $user_id, $item_id) {
   $cart = get_user_cart($db, $user_id, $item_id);
   if ($cart === false) {
@@ -158,10 +189,10 @@ function purchase_carts($db, $carts) {
   }
   delete_user_carts($db, $carts[0]['user_id']);
   //ロールバックorコミット
-  if(has_error() === false){
+  if (has_error() === false) {
     $db->commit();
     set_message('購入履歴、購入明細を登録しました');
-  }else{
+  } else {
     // ロールバック処理
     $db->rollback();
     set_error('データベース処理でエラーが発生しました');
