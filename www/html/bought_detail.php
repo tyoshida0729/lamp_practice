@@ -19,9 +19,9 @@ $db = get_db_connect();
 $user = get_login_user($db);
 
 if (is_admin($user) === true) {
-    $details = get_details($db,$user['order_id']);
+    $details = get_details($db,$order_id);
 } else {
-    $details = get_users_details($db, $user['user_id'],$user['order_id']);
+    $details = get_users_details($db, $user['user_id'],$order_id);
 }
 
 include_once VIEW_PATH . 'bought_detail_view.php';
