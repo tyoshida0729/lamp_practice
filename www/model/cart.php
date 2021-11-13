@@ -84,6 +84,17 @@ function get_users_details($db, $user_id, $order_id) {
   return fetch_all_query($db, $sql, [$user_id, $order_id]);
 }
 
+function get_popular_items($db){
+  $sql = "SELECT items.item_id,name,items.price,image,bought_detail.item_id,sum(amount)
+  FROM bought_detail 
+  INNER JOIN items ON items.item_id=bought_detail.item_id
+  GROUP BY bought_detail.item_id
+  ORDER BY sum(amount) DESC
+  LIMIT 3";
+
+  return fetch_all_query($db, $sql);
+}
+
 function add_cart($db, $user_id, $item_id) {
   $cart = get_user_cart($db, $user_id, $item_id);
   if ($cart === false) {

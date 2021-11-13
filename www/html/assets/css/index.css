@@ -1,4 +1,10 @@
 .item {
   margin-top: 10px;
 }
-
+.item_image {
+  height: 150px;
+  width: 20em;
+}
+table{
+  width: 50em;
+}
