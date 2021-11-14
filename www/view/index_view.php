@@ -16,14 +16,8 @@
     <h1>商品一覧</h1>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
-    <div class="card-deck">
-      <div class="row">
         <?php foreach ($items as $item) { ?>
-          <div class="col-6 item">
-            <div class="card h-100 text-center">
-              <div class="card-header">
                 <?php print(h($item['name'])); ?>
-              </div>
               <figure class="card-body">
                 <img class="card-img" src="<?php print(IMAGE_PATH . h($item['image'])); ?>">
                 <figcaption>
@@ -39,13 +33,28 @@
                   <?php } ?>
                 </figcaption>
               </figure>
-            </div>
-          </div>
-        <?php } ?>
-      </div>
-    </div>
+            <?php } ?>
   </div>
-
+  <h2>人気商品ランキング</h2>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>順位</th>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>価格</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <?php foreach ($popular_items as $i => $p_items) { ?>
+          <td><?php print($i+1) ?></td>
+          <td><img src="<?php print(IMAGE_PATH . h($p_items['image'])); ?>" class="item_image"></td>
+          <td><?php print(h($p_items['name'])); ?></td>
+          <td><?php print(number_format(h($p_items['price']))); ?>円</td>
+      </tr>
+    </tbody>
+  <?php } ?>
+  </table>
 </body>
-
 </html>
