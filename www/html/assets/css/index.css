@@ -5,6 +5,13 @@
   height: 150px;
   width: 20em;
 }
-table{
+.ranking {
+  display: block;
+  width: 50em;
+}
+tbody {
+  width: 50em;
+}
+table table-bordered {
   width: 50em;
 }

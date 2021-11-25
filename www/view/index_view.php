@@ -47,11 +47,13 @@
     </thead>
     <tbody>
       <tr>
+        <div class="ranking">
         <?php foreach ($popular_items as $i => $p_items) { ?>
           <td><?php print($i+1) ?></td>
           <td><img src="<?php print(IMAGE_PATH . h($p_items['image'])); ?>" class="item_image"></td>
           <td><?php print(h($p_items['name'])); ?></td>
           <td><?php print(number_format(h($p_items['price']))); ?>円</td>
+        </div>
       </tr>
     </tbody>
   <?php } ?>
