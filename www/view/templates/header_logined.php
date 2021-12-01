@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php print(LOGOUT_URL);?>">ログアウト</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php print(BOUGHT_HISTORY_URL);?>">購入履歴</a>
+        </li>
         <?php if(is_admin($user)){ ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php print(ADMIN_URL);?>">管理</a>
@@ -20,5 +23,5 @@
       </ul>
     </div>
   </nav>
-  <p>ようこそ、<?php print($user['name']); ?>さん。</p>
+  <p>ようこそ、<?php print(h($user['name'])); ?>さん。</p>
 </header>
