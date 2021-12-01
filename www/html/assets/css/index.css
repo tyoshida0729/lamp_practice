@@ -18,6 +18,10 @@
   padding: 40px auto;
   font-size: 30px;
 }
+.card-img {
+  height: 230px;
+  width: 250px;
+}
 .item_image {
   height: 160px;
   width: 160px;
@@ -36,4 +40,13 @@
 }
 table table-bordered {
   width: 50em;
+}
+.container {
+  width: 100%;
+}
+.container-sub {
+  width: 1000px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

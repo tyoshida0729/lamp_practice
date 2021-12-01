@@ -34,6 +34,7 @@
       <?php } ?>
       </div>
   </div>
+  <div class ="container-sub">
   <h2>人気商品ランキング</h2>
   <table class="table table-bordered">
     <thead class="thead-light">
@@ -57,6 +58,7 @@
     </tbody>
   <?php } ?>
   </table>
+  </div>
 </body>
 
 </html>
